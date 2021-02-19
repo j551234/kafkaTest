@@ -4,24 +4,11 @@ import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
 
+public class ProducerSample {
+    public static void main(String[] args) {
 
-public class KafkaProducerExample {
-    final  String TOPIC = "testTopic";
-
-
-    public static void main(String... args) throws Exception {
-
-        if (args.length == 0) {
-            runProducer(5);
-        } else {
-            runProducer(Integer.parseInt(args[0]));
-        }
-    }
-
-
-
-    public static Producer<Long, String> createProducer() {
-        final  String BOOTSTRAP_SERVERS ="10.3.0.65:9092";
+        final String TOPIC = "testTopic";
+        final String BOOTSTRAP_SERVERS = "10.3.0.65:9092";
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 BOOTSTRAP_SERVERS);
@@ -30,19 +17,15 @@ public class KafkaProducerExample {
                 LongSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 StringSerializer.class.getName());
-        return new KafkaProducer<>(props);
-    }
 
-
-    static void runProducer(final int sendMessageCount) throws Exception {
-        final Producer<Long, String> producer = createProducer();
-        long time = System.currentTimeMillis();
+        final Producer<Long, String> producer = new KafkaProducer<>(props);
 
         try {
-            for (long index = time; index < time + sendMessageCount; index++) {
+            while (true) {
+                long time = System.currentTimeMillis();
                 final ProducerRecord<Long, String> record =
-                        new ProducerRecord<>("testTopic", index,
-                                "Hello world " + index);
+                        new ProducerRecord<>(TOPIC, time,
+                                "Hello world " + time);
 
                 RecordMetadata metadata = producer.send(record).get();
 
@@ -53,6 +36,8 @@ public class KafkaProducerExample {
                         metadata.offset(), elapsedTime);
 
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             producer.flush();
             producer.close();

@@ -11,9 +11,9 @@ import java.util.Collections;
 import java.util.Properties;
 
 public class KafkaConsumerExample {
-    private final static String TOPIC = "quickstart-events";
+    private final static String TOPIC = "testTopic";
     private final static String BOOTSTRAP_SERVERS =
-            "localhost:9092";
+            "10.3.0.65:9092";
 
     public static void main(String... args) throws Exception {
 
