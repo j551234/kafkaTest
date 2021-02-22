@@ -1,5 +1,3 @@
-package connector;
-
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -7,7 +5,7 @@ import org.apache.kafka.streams.StreamsConfig;
 
 import java.util.Properties;
 
-public class ConnectorSample {
+public class StreamSample {
 
     public static void main(String[] args) {
 

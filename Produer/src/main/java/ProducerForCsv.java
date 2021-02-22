@@ -6,7 +6,6 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import prototype.KafkaProducerExample;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class ProducerForCsv {
     private static final String sourceFilePath = "/home/james/下載/2008.csv";
-    private static Logger logger = LoggerFactory.getLogger(ConsumerSample.class.getName());
+    private static Logger logger = LoggerFactory.getLogger(ProducerForCsv.class.getName());
     private static final String TOPIC = "testTopic";
 
     public static void main(String[] args) throws Exception {

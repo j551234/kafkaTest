@@ -1,2 +1,5 @@
 rootProject.name = 'kafkaTest'
+include 'Consumer'
+include 'Produer'
+include 'Stream'
 
