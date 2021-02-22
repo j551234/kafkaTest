@@ -1,5 +1,3 @@
-package prototype;
-
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -8,7 +6,7 @@ import java.util.Properties;
 
 
 public class KafkaProducerExample {
-    final  String TOPIC = "testTopic";
+    final String TOPIC = "testTopic";
 
 
     public static void main(String... args) throws Exception {
@@ -21,9 +19,8 @@ public class KafkaProducerExample {
     }
 
 
-
     public static Producer<Long, String> createProducer() {
-        final  String BOOTSTRAP_SERVERS ="10.3.0.65:9092";
+        final String BOOTSTRAP_SERVERS = "10.3.0.65:9092";
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 BOOTSTRAP_SERVERS);
