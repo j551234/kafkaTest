@@ -1,3 +1,5 @@
+package model;
+
 public class CSVModel {
     private String Year;
     private String Month;
